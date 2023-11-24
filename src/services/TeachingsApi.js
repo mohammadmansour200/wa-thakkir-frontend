@@ -2,7 +2,7 @@ import axios from "axios";
 
 class TeachingsApi {
   constructor() {
-    this._apiUrl = "https://teachings-api.onrender";
+    this._apiUrl = "https://teachings-api.onrender.com";
   }
   getTeachings() {
     return axios.get(this._apiUrl);
