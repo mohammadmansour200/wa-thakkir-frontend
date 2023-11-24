@@ -269,6 +269,7 @@ img {
 }
 
 .teaching-text {
+  white-space: pre-wrap;
   font-size: 1rem;
   max-height: 188px;
   overflow-y: auto;
