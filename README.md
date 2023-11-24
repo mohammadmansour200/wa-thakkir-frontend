@@ -7,7 +7,7 @@ Wa-thakkir is an app for sharing Islamic teachings build with OOP vanilla JS, HT
 
 ## 💻 Demo
 
-You can try it out by visiting the [live demo](https://https://wa-thakkir.onrender.com).
+You can try it out by visiting the [live demo](https://wa-thakkir.onrender.com).
 
 
 
