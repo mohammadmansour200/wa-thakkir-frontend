@@ -19,7 +19,7 @@ Wa-thakkir is an app for sharing Islamic teachings.
 
 ## 💻 Usage
 
-Set mode to development mode
+Set mode to development mode in webpack.config.js
 ```webpack.config.js
 mode: "development"
 ```
