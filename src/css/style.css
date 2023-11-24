@@ -272,6 +272,7 @@ img {
   white-space: pre-wrap;
   font-size: 1rem;
   max-height: 188px;
+  padding-left: 11px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(133, 125, 125, 0.2) #141414;
@@ -461,5 +462,12 @@ form label {
   .filter-btn {
     padding-right: 33px;
     padding-left: 33px;
+  }
+  *::-webkit-scrollbar {
+    height: 3px;
+    width: 3px;
+  }
+  *::-webkit-scrollbar-thumb {
+    border-radius: 0px;
   }
 }
