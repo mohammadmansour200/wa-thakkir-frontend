@@ -101,6 +101,7 @@ class TeachingList {
     this.filter();
     if (this._matchedArrays.length > 0) {
       this._teachingListEl.innerHTML = this._matchedArrays
+        .reverse()
         .map((teaching) => {
           const year = teaching.date.slice(0, 4);
           const day = teaching.date.slice(8, 10);
