@@ -1,5 +1,5 @@
 import TeachingsApi from "../services/TeachingsApi";
-
+import EditTeaching from "./EditTeaching";
 class TeachingList {
   constructor() {
     this._teachingListEl = document.querySelector("#teaching-list");
@@ -59,6 +59,18 @@ class TeachingList {
         const editForm = document.querySelector("#edit-form");
         editForm.setAttribute("edit-id", teachingId);
         this._modal.style.display = "block";
+        const editTeaching = new EditTeaching();
+        if (document.querySelectorAll("#teaching-form").length === 1) {
+          editTeaching.render();
+        }
+
+        const editedCard = document.querySelector(`[data-id="${teachingId}"]`);
+
+        const editTextAreaEl = document.querySelector(".edit-textarea");
+        editTextAreaEl.value = editedCard.children[3].textContent;
+
+        const editTagEl = document.querySelector(".edit-tag");
+        editTagEl.value = editedCard.children[4].textContent;
       }
     });
   }

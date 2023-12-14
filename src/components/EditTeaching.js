@@ -1,42 +1,40 @@
 import TeachingsApi from "../services/TeachingsApi";
-import TeachingList from "./TeachingList";
 
 class EditTeaching {
   constructor() {
     this._formModal = document.querySelector("#edit-form");
-    this._teachingList = new TeachingList();
+    this._id = this._formModal.getAttribute("edit-id");
+    this._editedCard = document.querySelector(`[data-id="${this._id}"]`);
   }
   tagsArray() {
     const str = "فلسطين عقيدة سيرة رقائق قرآن المرأة فوائد";
     this.strArr = str.split(" ");
   }
   addEventListeners() {
-    this._form.addEventListener("submit", this.handleSubmit.bind(this));
+    this.form.addEventListener("submit", this.handleSubmit.bind(this));
   }
 
   async handleSubmit(e) {
     e.preventDefault();
 
-    if (this._form.elements.text.value.split("").length > 0) {
-      this.btn.style.width = "40px";
+    if (this.form.elements.text.value.split("").length > 0) {
+      this.btn.style.width = "35px";
       this.btn.style.color = "transparent";
       this.spinner.style.display = "block";
       const teaching = {
         username: localStorage.getItem("username"),
-        text: this._form.elements.text.value,
-        tag: this._form.elements.tag.value,
+        text: this.form.elements.text.value,
+        tag: this.form.elements.tag.value,
       };
-      const id = this._formModal.getAttribute("edit-id");
-      const editTeaching = await TeachingsApi.updateTeaching(id, teaching);
+      const editTeaching = await TeachingsApi.updateTeaching(this.id, teaching);
       this.btn.style.width = "70%";
       this.btn.style.color = "black";
       this.spinner.style.display = "none";
 
-      const editedCard = document.querySelector(`[data-id="${id}"]`);
-      editedCard.children[3].textContent = teaching.text;
-      editedCard.children[4].textContent = teaching.tag;
+      this._editedCard.children[3].textContent = teaching.text;
+      this._editedCard.children[4].textContent = teaching.tag;
 
-      this._form.elements.text.value = "";
+      this.form.elements.text.value = "";
 
       document.dispatchEvent(new Event("closemodal"));
     } else {
@@ -47,13 +45,13 @@ class EditTeaching {
 
   render() {
     this.tagsArray();
-    this._form = document.createElement("form");
-    this._form.setAttribute("id", "teaching-form");
-    this._formModal.appendChild(this._form);
+    this.form = document.createElement("form");
+    this.form.setAttribute("id", "teaching-form");
+    this._formModal.appendChild(this.form);
 
     const formsDiv1 = document.createElement("div");
     formsDiv1.classList.add("form-controls");
-    this._form.appendChild(formsDiv1);
+    this.form.appendChild(formsDiv1);
 
     const labelEl1 = document.createElement("label");
     labelEl1.setAttribute("for", "teaching-text");
@@ -63,6 +61,8 @@ class EditTeaching {
     this.textAreaEl = document.createElement("textarea");
     this.textAreaEl.setAttribute("name", "text");
     this.textAreaEl.setAttribute("id", "teaching-text");
+    this.textAreaEl.setAttribute("class", "edit-textarea");
+    this.textAreaEl.value = this.editedCard.children[3].textContent;
     formsDiv1.appendChild(this.textAreaEl);
 
     this.danger1 = document.createElement("div");
@@ -72,7 +72,7 @@ class EditTeaching {
 
     const formsDiv2 = document.createElement("div");
     formsDiv2.classList.add("form-controls");
-    this._form.appendChild(formsDiv2);
+    this.form.appendChild(formsDiv2);
 
     const labelEl2 = document.createElement("label");
     labelEl2.setAttribute("for", "tag");
@@ -82,6 +82,8 @@ class EditTeaching {
     const optionSelectEl = document.createElement("select");
     optionSelectEl.setAttribute("name", "tag");
     optionSelectEl.setAttribute("id", "tag");
+    optionSelectEl.setAttribute("class", "edit-tag");
+    optionSelectEl.value = "hello";
     formsDiv2.appendChild(optionSelectEl);
 
     for (let i = 0; i < this.strArr.length; i++) {
@@ -93,7 +95,7 @@ class EditTeaching {
 
     const submitBtnWrapper = document.createElement("div");
     submitBtnWrapper.classList.add("submitbtn-wrapper");
-    this._form.appendChild(submitBtnWrapper);
+    this.form.appendChild(submitBtnWrapper);
 
     this.btn = document.createElement("button");
     this.btn.setAttribute("class", "btn");

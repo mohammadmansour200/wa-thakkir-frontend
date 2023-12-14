@@ -4,7 +4,6 @@ import TeachingList from "./TeachingList";
 class TeachingForm {
   constructor() {
     this._formModal = document.querySelector("#form-modal");
-    this._teachingList = new TeachingList();
   }
   tagsArray() {
     const str = "فلسطين عقيدة سيرة رقائق قرآن المرأة فوائد";
@@ -23,7 +22,8 @@ class TeachingForm {
       this._form.elements.text.value.split("").length > 0 &&
       this._form.elements.tag.value.split(" ").length > 0
     ) {
-      this.btn.style.width = "40px";
+      this._teachingList = new TeachingList();
+      this.btn.style.width = "35px";
       this.btn.style.color = "transparent";
       this.spinner.style.display = "block";
       const teaching = {
