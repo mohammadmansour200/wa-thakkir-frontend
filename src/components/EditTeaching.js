@@ -62,7 +62,6 @@ class EditTeaching {
     this.textAreaEl.setAttribute("name", "text");
     this.textAreaEl.setAttribute("id", "teaching-text");
     this.textAreaEl.setAttribute("class", "edit-textarea");
-    this.textAreaEl.value = this.editedCard.children[3].textContent;
     formsDiv1.appendChild(this.textAreaEl);
 
     this.danger1 = document.createElement("div");
@@ -83,7 +82,6 @@ class EditTeaching {
     optionSelectEl.setAttribute("name", "tag");
     optionSelectEl.setAttribute("id", "tag");
     optionSelectEl.setAttribute("class", "edit-tag");
-    optionSelectEl.value = "hello";
     formsDiv2.appendChild(optionSelectEl);
 
     for (let i = 0; i < this.strArr.length; i++) {

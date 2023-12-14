@@ -58,7 +58,9 @@ class TeachingList {
       } else if (e.target.classList.contains("edit-btn")) {
         const editForm = document.querySelector("#edit-form");
         editForm.setAttribute("edit-id", teachingId);
+
         this._modal.style.display = "block";
+
         const editTeaching = new EditTeaching();
         if (document.querySelectorAll("#teaching-form").length === 1) {
           editTeaching.render();
@@ -78,9 +80,13 @@ class TeachingList {
     const pageSpinner = document.querySelector(".page-spinner");
     try {
       pageSpinner.style.display = "block";
+
       const res = await TeachingsApi.getTeachings();
+
       pageSpinner.style.display = "none";
+
       this._teachings = res.data.data;
+
       this.render();
       this.filter();
     } catch (error) {
@@ -95,8 +101,10 @@ class TeachingList {
   }
   addSpinnerOnDelete(teachingId) {
     const cardEl = document.querySelector(`[data-id="${teachingId}"]`);
+
     const spinner = cardEl.children[1];
     spinner.style.display = "block";
+
     const deleteBtn = cardEl.children[2];
     deleteBtn.style.display = "none";
   }
