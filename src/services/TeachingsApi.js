@@ -7,9 +7,11 @@ class TeachingsApi {
   getTeachings() {
     return axios.get(this._apiUrl);
   }
+
   createTeaching(data) {
     return axios.post(this._apiUrl, data);
   }
+
   deleteTeaching(id) {
     const username = localStorage.getItem("username")
       ? localStorage.getItem("username")
@@ -20,7 +22,8 @@ class TeachingsApi {
       },
     });
   }
-  updateTeaching(id, data) {
+
+  editTeaching(id, data) {
     return axios.put(`${this._apiUrl}/${id}`, data);
   }
 }
