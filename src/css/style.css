@@ -5,7 +5,6 @@
   scrollbar-color: rgba(133, 125, 125, 0.2) black;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 /* Chrome, Edge and Safari */
@@ -347,13 +346,12 @@ img {
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-box {
   position: relative;
-  margin: 10% auto;
+  margin: 5% auto;
   width: 600px;
   background-color: rgb(36 36 36 / 72%);
   backdrop-filter: blur(8px);
@@ -374,7 +372,7 @@ img {
 
 form input,
 form textarea {
-  width: 97%;
+  width: 96%;
 }
 
 form input,
@@ -436,7 +434,7 @@ form label {
   border: none;
   cursor: pointer;
   padding: 10px;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   font-size: inherit;
   margin-top: 10px;
   width: 70%;

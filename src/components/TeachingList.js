@@ -64,6 +64,7 @@ class TeachingList {
         editForm.setAttribute("edit-id", teachingId);
 
         this._editModal.style.display = "block";
+        document.body.style.overflowY = "hidden";
 
         const editTeaching = new EditTeaching();
         if (document.querySelectorAll("#teaching-form").length === 1)

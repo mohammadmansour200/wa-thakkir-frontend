@@ -15,11 +15,13 @@ class Modal {
 
   openModal() {
     this._modal.style.display = "block";
+    document.body.style.overflowY = "hidden";
   }
 
   closeModal() {
     this._editModal.style.display = "none";
     this._modal.style.display = "none";
+    document.body.style.overflowY = "auto";
   }
 
   outsideClick(e) {
